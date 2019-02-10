@@ -1,0 +1,11 @@
+d:\dokumenty\visual studio 2013\Projects\Hra\Hra\bin\Debug\Hra.exe.config
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Debug\Hra.csprojResolveAssemblyReference.cache
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Debug\Hra.Form1.resources
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Debug\Hra.Properties.Resources.resources
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Debug\Hra.Resource1.resources
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Debug\Hra.csproj.GenerateResource.Cache
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\bin\Debug\Hra.exe
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\bin\Debug\Hra.pdb
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Debug\Hra.exe
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Debug\Hra.pdb
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Debug\Hra.Resource2.resources
