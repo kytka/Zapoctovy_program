@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,9 +10,12 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.Drawing.Text;
+using System.Reflection;
 
 namespace Hra
 {
+    public enum SmerPohybu { DOPRAVA, DOLEVA, NAHORU, DOLU};
+    
     public partial class Form1 : Form
     {
         //==================================================
@@ -51,9 +55,20 @@ namespace Hra
 
 
         }
-        Thread vlaknoNaZobrazeniHowToPlay;
+        Thread VlaknoNaZobrazeniHowToPlay;
         Point LocationBeforeHittingFullscreen;
         Size SizeBeforeHittingFullscreen;
+        StreamReader mapa;
+        List<PictureBox> SeznamPictureBoxuNaMape;
+        List<PohyblivyPrvek> SeznamPohyblivychPrvkuNaMape;
+        List<NepohyblivyPrvek> SeznamNepohyblivychPrvkuNaMape;
+        static public List<Hranice> seznamHranice;
+        public Random zivotJeJenNahoda = new Random();
+        Bitmap pozadiHraciPlochy;
+        Hrdina player1;
+        Hrdina player2;
+        //TODO nevim jestli bude fungovat
+        PictureBox blikani;
         //==================================================
 
         enum Stav { MENU, VYBERPOCETHRACU, VYBERLEVEL, HRA, VYHRA, PROHRA , PAUZA, NASTAVENI, HOWTOPLAY};
@@ -63,6 +78,11 @@ namespace Hra
         enum CisloLevelu { RPVNI, DRUHY, TRETI };
         CisloLevelu cisloLevelu;
         //==================================================
+
+        void None()
+        {
+
+        }
 
         void ZneviditelniVsechnyControls()
         {
@@ -86,11 +106,13 @@ namespace Hra
             {
                 vec.Enter += new EventHandler(VkroceniNaTlacitko);
                 vec.Leave += new EventHandler(VystoupeniZTlacitka);
+                //TODO vycentrovani vsech tlacitek vec.Left = (this.Width-vec.Width) / 2;
+                //TODO napada me, ze bych mohl chytre vymyslet tabindexy (jsou desetinne) tak, aby to na vsech obrazovkach fungovalo hezky a prepinalo se to poporade
             }
             ZneviditelniVsechnyControls();
         }
 
-        void NastavStav (Stav jaky)
+        void NastavStav(Stav jaky)
         {
             switch (jaky)
             {
@@ -118,14 +140,20 @@ namespace Hra
                     stav = Stav.VYBERLEVEL;
                     break;
                 case Stav.HRA:
-                    //TODO NactiLevel();
                     if (stav == Stav.PAUZA)
                     {
-                        this.BackgroundImage = null;
+                        this.BackgroundImage = pozadiHraciPlochy;
                         stinitko.Visible = false;
+                        blikani = new PictureBox();
+                        blikani.Size = this.ClientSize;
+                        blikani.Image = pozadiHraciPlochy;
+                        this.Controls.Add(blikani);
+                    }
+                    else
+                    {
+                        ZneviditelniVsechnyControls();
                     }
                     stav = Stav.HRA;
-                    ZneviditelniVsechnyControls();
                     break;
                 case Stav.VYHRA:
                     ZneviditelniVsechnyControls();
@@ -150,7 +178,7 @@ namespace Hra
                     stav = Stav.HOWTOPLAY;
                     break;
                 case Stav.PAUZA:
-                    ZneviditelniVsechnyControls();
+                    pozadiHraciPlochy = (Bitmap)this.BackgroundImage;
                     bHowToPlay.Visible = true;
                     bResume.Visible = true;
                     bMainMenu.Visible = true;
@@ -179,10 +207,6 @@ namespace Hra
                     stinitko.Width += 5;
                     stinitko.Visible = true;
                     stav = Stav.PAUZA;
-                    //==================================================
-                    
-                    //==================================================
-                    stav = Stav.PAUZA;
                     break;
                 default:
                     break;
@@ -193,6 +217,9 @@ namespace Hra
         {
             switch (e.KeyCode)
             {
+                case Keys.Right:
+                    player1.PohniSe(player1, SmerPohybu.DOPRAVA);
+                    break;
                 case Keys.Escape:
                     switch (stav)
                     {
@@ -271,6 +298,16 @@ namespace Hra
         private void bStartGame_Click(object sender, EventArgs e)
         {
             NastavStav(Stav.HRA);
+            //TODO kod z https://stackoverflow.com/questions/3314140/how-to-read-embedded-resource-text-file/3314203
+            //potreboval jsem, aby se soubor cetl z Resources a ne z cesty
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "Hra.Resources.map11.txt";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (mapa = new StreamReader(stream))
+            {
+                NactiLevel(mapa);
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -330,9 +367,7 @@ namespace Hra
 
         private void bHowToPlay_MouseHover(object sender, EventArgs e)
         {
-            //TODO mozna vymyslet, jak zvetsovat a zmensovat tlacit kdyz se na nich presunuju
-            //myFont = new Font(fonts.Families[0], 16F);
-            //bHowToPlay.Font = myFont;
+
         }
 
         private void VkroceniNaTlacitko(Object sender, EventArgs e)
@@ -344,12 +379,272 @@ namespace Hra
             JinySender.Font = temp;
         }
 
-        void VystoupeniZTlacitka(Object sender, EventArgs e)
+        private void VystoupeniZTlacitka(Object sender, EventArgs e)
         {
             Control JinySender;
             JinySender = (Control)sender;
             JinySender.Font = myFont;
         }
 
+        public Point DejMiLevyHorniRohMapy(int PocetRadku,int PocetSloupcu)
+        {
+            Point souradnice = new Point();
+            int moznaSirka = this.ClientSize.Width / PocetSloupcu;
+            int moznaVyska = this.ClientSize.Height / PocetRadku;
+            if (moznaVyska < moznaSirka)
+            {
+                souradnice.X = Math.Abs(this.ClientSize.Width - this.ClientSize.Height) / 2;
+                souradnice.Y = 0;
+            }
+            else
+            {
+                souradnice.X = 0;
+                souradnice.Y = Math.Abs(this.ClientSize.Width - this.ClientSize.Height) / 2;
+            }
+            return souradnice;
+        }
+
+        public int DejMiStranuCtverceNaMape(int PocetRadku, int PocetSloupcu)
+        {
+            int moznaSirka = this.ClientSize.Width / PocetSloupcu;
+            int moznaVyska = this.ClientSize.Height / PocetRadku;
+            if (moznaVyska < moznaSirka)
+            {
+                return moznaVyska;
+            }
+            else
+            {
+                return moznaSirka;
+            }
+        }
+
+        public void NactiLevel(StreamReader soubor)
+        {
+            //====================================================
+            Rectangle screenClientRect = base.RectangleToScreen(base.ClientRectangle);
+            int leftBorderWidth = screenClientRect.Left - base.Left;
+            int rightBorderWidth = base.Right - screenClientRect.Right;
+            int topBorderHeight = screenClientRect.Top - base.Top;
+            int bottomBorderHeight = base.Bottom - screenClientRect.Bottom;
+            //====================================================
+            int pocetRadku = int.Parse(soubor.ReadLine());
+            int pocetSloupcu = int.Parse(soubor.ReadLine());
+            Point levyHorniRohMapy = DejMiLevyHorniRohMapy(pocetRadku, pocetSloupcu);
+            int stranaCtverceNaMape = DejMiStranuCtverceNaMape(pocetRadku, pocetSloupcu);
+            SeznamPictureBoxuNaMape = new List<PictureBox>();
+            SeznamPohyblivychPrvkuNaMape = new List<PohyblivyPrvek>();
+            SeznamNepohyblivychPrvkuNaMape = new List<NepohyblivyPrvek>();
+            seznamHranice = new List<Hranice>();
+            pozadiHraciPlochy = new Bitmap(this.Width - leftBorderWidth - rightBorderWidth, this.Height - topBorderHeight - bottomBorderHeight);
+            Graphics g = Graphics.FromImage(pozadiHraciPlochy);
+
+            for (int i = 0; i < pocetSloupcu; i++)
+            {
+                string radekSouboru = soubor.ReadLine();
+                for (int j = 0; j < pocetRadku; j++)
+                {
+                    char znak = radekSouboru[j];
+                    Point pomocnyBod = new Point();
+                    pomocnyBod.X = levyHorniRohMapy.X + j * stranaCtverceNaMape;
+                    pomocnyBod.Y = levyHorniRohMapy.Y + i * stranaCtverceNaMape;
+                    switch (znak)
+                    {
+                        case '0'://podlaha
+                            g.DrawImage(DejObrazekPodlahy(zivotJeJenNahoda.Next(18)),pomocnyBod.X,pomocnyBod.Y,stranaCtverceNaMape,stranaCtverceNaMape);
+                            break;
+                        case '1'://Player1
+                            player1 = new Hrdina(pomocnyBod, stranaCtverceNaMape);
+                            player1.Image = Properties.Resources.eyebrowman_idle;
+                            SeznamPictureBoxuNaMape.Add(player1);
+                            SeznamPohyblivychPrvkuNaMape.Add(player1);
+                            this.Controls.Add(player1);
+
+                            g.DrawImage(DejObrazekPodlahy(zivotJeJenNahoda.Next(18)), pomocnyBod.X, pomocnyBod.Y, stranaCtverceNaMape, stranaCtverceNaMape);
+                            break;
+                        case '2'://Player2
+                            if (pocetHracu == PocetHracu.DVA)
+                            {
+                                player2 = new Hrdina(pomocnyBod, stranaCtverceNaMape);
+                                player2.Image = Properties.Resources.eyebrowman_left;
+                                SeznamPictureBoxuNaMape.Add(player2);
+                                SeznamPohyblivychPrvkuNaMape.Add(player2);
+                                this.Controls.Add(player2);
+
+                            }
+                            g.DrawImage(DejObrazekPodlahy(zivotJeJenNahoda.Next(18)), pomocnyBod.X, pomocnyBod.Y, stranaCtverceNaMape, stranaCtverceNaMape);
+                            break;
+                        case 'D'://Demon
+                            break;
+                        case 'Z'://Zombie
+                            break;
+                        case 'R'://oRc
+                            break;
+                        case 'H'://HardBlock
+                            HardBlock hardblock = new HardBlock(pomocnyBod, stranaCtverceNaMape);
+                            SeznamNepohyblivychPrvkuNaMape.Add(hardblock);
+                            SeznamPictureBoxuNaMape.Add(hardblock);
+                            this.Controls.Add(hardblock);
+                            seznamHranice.Add(new Hranice(pomocnyBod.Y, pomocnyBod.Y + stranaCtverceNaMape, pomocnyBod.X + stranaCtverceNaMape, pomocnyBod.X, false));
+                            break;
+                        case '|':
+                            g.DrawImage(Properties.Resources.okraj64x64, pomocnyBod.X, pomocnyBod.Y, stranaCtverceNaMape, stranaCtverceNaMape);
+                            seznamHranice.Add(new Hranice(pomocnyBod.Y, pomocnyBod.Y + stranaCtverceNaMape, pomocnyBod.X + stranaCtverceNaMape, pomocnyBod.X, false));
+                            break;
+                        case '-':
+                            g.DrawImage(Properties.Resources.hardblock64x64, pomocnyBod.X, pomocnyBod.Y, stranaCtverceNaMape, stranaCtverceNaMape);
+                            seznamHranice.Add(new Hranice(pomocnyBod.Y, pomocnyBod.Y + stranaCtverceNaMape, pomocnyBod.X + stranaCtverceNaMape, pomocnyBod.X, false));
+                            break;
+                        case 'S'://SoftBlock
+                            break;
+                            //TODO dalsi bloky
+                        default:
+                            break;
+                    }
+                }
+            }
+            //to tu mam, aby se nedelo problikavani pri pohybu transparentnich gifu
+            blikani = new PictureBox();
+            blikani.Size = this.ClientSize;
+            blikani.Image = pozadiHraciPlochy;
+            this.Controls.Add(blikani);
+            this.BackgroundImage = pozadiHraciPlochy;
+        }
+
+        Image DejObrazekPodlahy(int nahodneCislo)
+        {
+            Image navratovyObrazek;
+            switch (nahodneCislo)
+            {
+                case 0:
+                    navratovyObrazek = Properties.Resources.podlaha00;
+                    break;
+                case 2:
+                    navratovyObrazek = Properties.Resources.podlaha02;
+                    break;
+                case 3:
+                    navratovyObrazek = Properties.Resources.podlaha03;
+                    break;
+                case 4:
+                    navratovyObrazek = Properties.Resources.podlaha04;
+                    break;
+                case 5:
+                    navratovyObrazek = Properties.Resources.podlaha05;
+                    break;
+                case 6:
+                    navratovyObrazek = Properties.Resources.podlaha06;
+                    break;
+                case 7:
+                    navratovyObrazek = Properties.Resources.podlaha07;
+                    break;
+                case 1:
+                    navratovyObrazek = Properties.Resources.podlaha01;
+                    break;
+                default:
+                    //bylo to divny, chci vic obycejne podlahy
+                    navratovyObrazek = Properties.Resources.podlaha01;
+                    break;
+            }
+            return navratovyObrazek;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            
+        }
+    
+        
     }
+
+
+    public abstract class Prvek : PictureBox
+    {
+
+    }
+
+    public abstract class PohyblivyPrvek : Prvek
+    {
+        public void PohniSe(PohyblivyPrvek sender, SmerPohybu smer)
+        { //TODO co by mi vubec melo rikat, kam se smim pohnout?
+            const int rychlostPohybu = 2;
+            int novaLeva = sender.Location.X;
+            int novaPrava = sender.Location.X + sender.Width;
+            int novaHorni = sender.Location.Y;
+            int novaDolni = sender.Location.Y + sender.Height;
+            switch (smer)
+            {
+                case SmerPohybu.DOPRAVA:
+                    novaPrava += rychlostPohybu;
+                    novaLeva += rychlostPohybu;
+                    break;
+                case SmerPohybu.DOLEVA:
+                    novaPrava -= rychlostPohybu;
+                    novaLeva -= rychlostPohybu;
+                    break;
+                case SmerPohybu.NAHORU:
+                    //TODO
+                    break;
+                case SmerPohybu.DOLU:
+                    //TODO
+                    break;
+                default:
+                    break;
+            }
+            foreach (Hranice hrana in Form1.seznamHranice)
+            {
+                if ((novaHorni > hrana.dolni) || (novaDolni < hrana.horni) || (novaLeva > hrana.prava) || (novaPrava < hrana.leva))
+                {
+                    sender.Location = new Point(novaLeva, novaHorni);
+                }
+            }
+        }
+    }
+
+    public abstract class NepohyblivyPrvek : Prvek
+    {
+
+    }
+
+    public class Hrdina : PohyblivyPrvek
+    {
+        public Hrdina(Point souradnice, int velikostctverecku)
+        {
+            Location = souradnice;
+            this.Height = velikostctverecku;
+            this.Width = velikostctverecku;
+            this.SizeMode = PictureBoxSizeMode.Zoom;
+            this.BackColor = Color.Transparent;
+        }
+    }
+
+    public class HardBlock : NepohyblivyPrvek
+    {
+        public HardBlock(Point souradnice, int velikostctverecku)
+        {
+            Location = souradnice;
+            this.Image = Properties.Resources.hardblock64x64;
+            this.Height = velikostctverecku;
+            this.Width = velikostctverecku;
+            this.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+    }
+
+    public class Hranice
+    {
+        public int horni;
+        public int dolni;
+        public int prava;
+        public int leva;
+        public bool softblock = false;
+        public Hranice(int Horni,int Dolni,int Prava,int Leva,bool Softblock)
+        {
+            horni = Horni;
+            dolni = Dolni;
+            prava = Prava;
+            leva = Leva;
+            softblock = Softblock;
+        }
+    }
+
+
 }

@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>MyIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -131,6 +134,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\transparent1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\map11.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MyIcon.ico" />
+    <None Include="Resources\okraj64x64.png" />
+    <None Include="Resources\hardblock64x64.png" />
+    <None Include="Resources\podlaha07.png" />
+    <None Include="Resources\podlaha06.png" />
+    <None Include="Resources\podlaha05.png" />
+    <None Include="Resources\podlaha04.png" />
+    <None Include="Resources\podlaha03.png" />
+    <None Include="Resources\podlaha02.png" />
+    <None Include="Resources\podlaha01.png" />
+    <None Include="Resources\podlaha00.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

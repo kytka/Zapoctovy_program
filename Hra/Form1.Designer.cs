@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bPlay = new System.Windows.Forms.Button();
             this.bHowToPlay = new System.Windows.Forms.Button();
@@ -53,6 +54,7 @@
             this.lNavodKeHre = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.stinitko = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pLevel.SuspendLayout();
             this.pWindowMode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stinitko)).BeginInit();
@@ -60,11 +62,11 @@
             // 
             // bPlay
             // 
-            this.bPlay.Location = new System.Drawing.Point(73, 35);
+            this.bPlay.Location = new System.Drawing.Point(84, 12);
             this.bPlay.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.bPlay.Name = "bPlay";
             this.bPlay.Size = new System.Drawing.Size(138, 19);
-            this.bPlay.TabIndex = 1;
+            this.bPlay.TabIndex = 0;
             this.bPlay.Text = "Play";
             this.bPlay.UseVisualStyleBackColor = true;
             this.bPlay.Click += new System.EventHandler(this.bPlay_Click);
@@ -125,7 +127,7 @@
             // 
             // bStartGame
             // 
-            this.bStartGame.Location = new System.Drawing.Point(127, 360);
+            this.bStartGame.Location = new System.Drawing.Point(129, 349);
             this.bStartGame.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.bStartGame.Name = "bStartGame";
             this.bStartGame.Size = new System.Drawing.Size(130, 17);
@@ -136,7 +138,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(482, 71);
+            this.button8.Location = new System.Drawing.Point(66, 104);
             this.button8.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(156, 30);
@@ -147,10 +149,10 @@
             // 
             // bNextLevel
             // 
-            this.bNextLevel.Location = new System.Drawing.Point(502, 151);
+            this.bNextLevel.Location = new System.Drawing.Point(91, 176);
             this.bNextLevel.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.bNextLevel.Name = "bNextLevel";
-            this.bNextLevel.Size = new System.Drawing.Size(249, 55);
+            this.bNextLevel.Size = new System.Drawing.Size(131, 19);
             this.bNextLevel.TabIndex = 9;
             this.bNextLevel.Text = "Next Level";
             this.bNextLevel.UseVisualStyleBackColor = true;
@@ -158,10 +160,10 @@
             // 
             // bMainMenu
             // 
-            this.bMainMenu.Location = new System.Drawing.Point(541, 233);
+            this.bMainMenu.Location = new System.Drawing.Point(101, 286);
             this.bMainMenu.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.bMainMenu.Name = "bMainMenu";
-            this.bMainMenu.Size = new System.Drawing.Size(141, 36);
+            this.bMainMenu.Size = new System.Drawing.Size(129, 23);
             this.bMainMenu.TabIndex = 10;
             this.bMainMenu.Text = "Main Menu";
             this.bMainMenu.UseVisualStyleBackColor = true;
@@ -169,10 +171,10 @@
             // 
             // bRetry
             // 
-            this.bRetry.Location = new System.Drawing.Point(539, 313);
+            this.bRetry.Location = new System.Drawing.Point(81, 57);
             this.bRetry.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.bRetry.Name = "bRetry";
-            this.bRetry.Size = new System.Drawing.Size(141, 30);
+            this.bRetry.Size = new System.Drawing.Size(141, 20);
             this.bRetry.TabIndex = 11;
             this.bRetry.Text = "Retry";
             this.bRetry.UseVisualStyleBackColor = true;
@@ -180,10 +182,10 @@
             // 
             // bResume
             // 
-            this.bResume.Location = new System.Drawing.Point(517, 388);
+            this.bResume.Location = new System.Drawing.Point(114, 311);
             this.bResume.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.bResume.Name = "bResume";
-            this.bResume.Size = new System.Drawing.Size(163, 35);
+            this.bResume.Size = new System.Drawing.Size(108, 32);
             this.bResume.TabIndex = 12;
             this.bResume.Text = "Resume";
             this.bResume.UseVisualStyleBackColor = true;
@@ -250,11 +252,11 @@
             // 
             // bSettings
             // 
-            this.bSettings.Location = new System.Drawing.Point(446, 30);
+            this.bSettings.Location = new System.Drawing.Point(65, 33);
             this.bSettings.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.bSettings.Name = "bSettings";
             this.bSettings.Size = new System.Drawing.Size(172, 23);
-            this.bSettings.TabIndex = 18;
+            this.bSettings.TabIndex = 1;
             this.bSettings.Text = "Settings";
             this.bSettings.UseVisualStyleBackColor = true;
             this.bSettings.Click += new System.EventHandler(this.bSettings_Click);
@@ -273,7 +275,7 @@
             // 
             this.rbFullscreen.AutoSize = true;
             this.rbFullscreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbFullscreen.Location = new System.Drawing.Point(66, 31);
+            this.rbFullscreen.Location = new System.Drawing.Point(66, 29);
             this.rbFullscreen.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.rbFullscreen.Name = "rbFullscreen";
             this.rbFullscreen.Size = new System.Drawing.Size(132, 15);
@@ -299,10 +301,10 @@
             // 
             // bBack
             // 
-            this.bBack.Location = new System.Drawing.Point(90, 299);
+            this.bBack.Location = new System.Drawing.Point(65, 230);
             this.bBack.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.bBack.Name = "bBack";
-            this.bBack.Size = new System.Drawing.Size(235, 35);
+            this.bBack.Size = new System.Drawing.Size(57, 21);
             this.bBack.TabIndex = 6;
             this.bBack.Text = "Back";
             this.bBack.UseVisualStyleBackColor = true;
@@ -322,7 +324,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(740, 71);
+            this.textBox1.Location = new System.Drawing.Point(733, 77);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -334,8 +336,8 @@
             // stinitko
             // 
             this.stinitko.BackColor = System.Drawing.Color.Transparent;
-            this.stinitko.BackgroundImage = global::Hra.Properties.Resources.transparent;
             this.stinitko.ErrorImage = null;
+            this.stinitko.Image = global::Hra.Properties.Resources.transparent;
             this.stinitko.Location = new System.Drawing.Point(15, 407);
             this.stinitko.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.stinitko.Name = "stinitko";
@@ -344,6 +346,11 @@
             this.stinitko.TabIndex = 0;
             this.stinitko.TabStop = false;
             this.stinitko.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 50;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -372,8 +379,10 @@
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Font = new System.Drawing.Font("PC Senior", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -413,6 +422,7 @@
         private System.Windows.Forms.Button bBack;
         private System.Windows.Forms.Label lNavodKeHre;
         private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Timer timer1;
     }
 }
 

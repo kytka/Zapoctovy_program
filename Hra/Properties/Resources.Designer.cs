@@ -91,12 +91,137 @@ namespace Hra.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hardblock64x64 {
+            get {
+                object obj = ResourceManager.GetObject("hardblock64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 15
+        ///15
+        ///---------------
+        ///|1000000000000|
+        ///|0H0H0H0H0H0H0|
+        ///|0000000000000|
+        ///|0H0H0H0H0H0H0|
+        ///|0000000000000|
+        ///|0H0H0H0H0H0H0|
+        ///|0000000000000|
+        ///|0H0H0H0H0H0H0|
+        ///|0000000000000|
+        ///|0H0H0H0H0H0H0|
+        ///|0000000000000|
+        ///|0H0H0H0H0H0H0|
+        ///|0000000000000|
+        ///---------------.
+        /// </summary>
+        internal static string map11 {
+            get {
+                return ResourceManager.GetString("map11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap okraj64x64 {
+            get {
+                object obj = ResourceManager.GetObject("okraj64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] pcsenior {
             get {
                 object obj = ResourceManager.GetObject("pcsenior", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap podlaha00 {
+            get {
+                object obj = ResourceManager.GetObject("podlaha00", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap podlaha01 {
+            get {
+                object obj = ResourceManager.GetObject("podlaha01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap podlaha02 {
+            get {
+                object obj = ResourceManager.GetObject("podlaha02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap podlaha03 {
+            get {
+                object obj = ResourceManager.GetObject("podlaha03", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap podlaha04 {
+            get {
+                object obj = ResourceManager.GetObject("podlaha04", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap podlaha05 {
+            get {
+                object obj = ResourceManager.GetObject("podlaha05", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap podlaha06 {
+            get {
+                object obj = ResourceManager.GetObject("podlaha06", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap podlaha07 {
+            get {
+                object obj = ResourceManager.GetObject("podlaha07", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

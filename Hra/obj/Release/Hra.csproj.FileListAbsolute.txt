@@ -8,3 +8,7 @@ D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.Resource2.resou
 D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.csproj.GenerateResource.Cache
 D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.exe
 D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.pdb
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\bin\Release\Resources\transparent.png
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.Resources.Resource1.resources
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.Resources.Resource2.resources
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.csprojResolveAssemblyReference.cache
