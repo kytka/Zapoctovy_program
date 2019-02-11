@@ -1,0 +1,10 @@
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\bin\Release\Hra.exe.config
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\bin\Release\Hra.exe
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\bin\Release\Hra.pdb
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.Form1.resources
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.Properties.Resources.resources
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.Resource1.resources
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.Resource2.resources
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.csproj.GenerateResource.Cache
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.exe
+D:\Dokumenty\Visual Studio 2013\Projects\Hra\Hra\obj\Release\Hra.pdb
