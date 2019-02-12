@@ -118,58 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="eyebrowman_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eyebrowman_right.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pcsenior" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pcsenior.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="eyebrowman_idle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eyebrowman_idle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="eyebrowman_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eyebrowman_left.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>eyebrowman_left.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\transparent1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="hardblock64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\hardblock64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="map11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\map11.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
-  </data>
-  <data name="podlaha00" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\podlaha00.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="podlaha01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\podlaha01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="podlaha02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\podlaha02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="podlaha03" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\podlaha03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="podlaha04" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\podlaha04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="podlaha05" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\podlaha05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="podlaha06" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\podlaha06.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="podlaha07" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\podlaha07.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="okraj64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\okraj64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bedna64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bedna64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bomba_25t_64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bomba_25t_64x64.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="eyebrowman_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>eyebrowman_right.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
