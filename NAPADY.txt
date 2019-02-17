@@ -1,0 +1,5 @@
+Celkem 9 levelu... 3x3svìty undead, demons, orcs. Vzdy by se po prohre zobrazila ibrazovka s nìjakým sassy komentáøem pøíslušným k tomu svìtu.
+
+Nìkam do adresáøe dám soubor, který mi umožní lépe ladit... pøecházet do libovolných levelù. Ještì lépe, mohlo by to být spuštìno na stisknutí urèité klávesy v Stav.ENTER
+
+Soubor pak mohu umistit na itch.io. Treba pak nebudou vyskakovat hlasky, ze je to vir...
